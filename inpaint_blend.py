@@ -266,8 +266,10 @@ class InpaintBlend:
         img_bchw = img.permute(2,0,1).unsqueeze(0)
         pad = (max(dx,0), max(-dx,0), max(dy,0), max(-dy,0))  # (left,right,top,bottom) for F.pad is (left,right,top,bottom)
         img_pad = F.pad(img_bchw, pad, mode='replicate')
-        x0 = max(-dx,0); x1 = x0 + img.shape[1]
-        y0 = max(-dy,0); y1 = y0 + img.shape[0]
+        x0 = max(-dx,0)
+        x1 = x0 + img.shape[1]
+        y0 = max(-dy,0)
+        y1 = y0 + img.shape[0]
         out = img_pad[:, :, y0:y1, x0:x1]
         return out.squeeze(0).permute(1,2,0)
 
@@ -275,8 +277,10 @@ class InpaintBlend:
         m = mask.unsqueeze(0).unsqueeze(0).float()
         pad = (max(dx,0), max(-dx,0), max(dy,0), max(-dy,0))
         m_pad = F.pad(m, pad, mode='replicate')
-        x0 = max(-dx,0); x1 = x0 + mask.shape[1]
-        y0 = max(-dy,0); y1 = y0 + mask.shape[0]
+        x0 = max(-dx,0)
+        x1 = x0 + mask.shape[1]
+        y0 = max(-dy,0)
+        y1 = y0 + mask.shape[0]
         return (m_pad[:, :, y0:y1, x0:x1].squeeze(0).squeeze(0) > 0.5)
 
     def _laplacian(self, img: torch.Tensor) -> torch.Tensor:
