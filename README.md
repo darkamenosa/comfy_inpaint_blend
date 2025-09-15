@@ -1,4 +1,4 @@
-# ComfyUI-InpaintBlend
+# comfy_inpaint_blend
 
 Advanced blending algorithms for seamless inpainting in ComfyUI. Specifically designed for image-space inpainting models like **Google Nano Banana** and **ByteDance Seedream 4** that work directly on images rather than latent space.
 
@@ -37,7 +37,7 @@ The standard `ImageCompositeMasked` node works well with Google Nano Banana but 
 
 2. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/ComfyUI-InpaintBlend.git comfy_inpaint_blend
+   git clone https://github.com/darkamenosa/comfy_inpaint_blend.git
    ```
 
 3. Install dependencies:

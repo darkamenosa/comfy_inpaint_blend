@@ -1,7 +1,7 @@
 [project]
-name = "comfy-compose-enhanced"
+name = "comfy-inpaint-blend"
 version = "1.0.0"
-description = "Enhanced image compositing node for ComfyUI with Poisson blending support"
+description = "Seamless inpainting for image-space models like Google Nano Banana and ByteDance Seedream 4. Fixes color mismatches using Poisson blending."
 license = { text = "MIT" }
 requires-python = ">=3.8"
 dependencies = [
@@ -14,11 +14,11 @@ classifiers = [
 ]
 
 [project.urls]
-Repository = "https://github.com/yourusername/comfy-compose-enhanced"
-Documentation = "https://github.com/yourusername/comfy-compose-enhanced/wiki"
-"Bug Tracker" = "https://github.com/yourusername/comfy-compose-enhanced/issues"
+Repository = "https://github.com/darkamenosa/comfy_inpaint_blend"
+Documentation = "https://github.com/darkamenosa/comfy_inpaint_blend/wiki"
+"Bug Tracker" = "https://github.com/darkamenosa/comfy_inpaint_blend/issues"
 
 [tool.comfy]
-PublisherId = "comfy-compose"
-DisplayName = "Image Composite Enhanced"
+PublisherId = "darkamenosa"
+DisplayName = "Inpaint Blend"
 requires-comfyui = ">=1.0.0"
