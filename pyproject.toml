@@ -1,0 +1,24 @@
+[project]
+name = "comfy-compose-enhanced"
+version = "1.0.0"
+description = "Enhanced image compositing node for ComfyUI with Poisson blending support"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+dependencies = [
+    "opencv-python>=4.5.0",
+    "numpy>=1.19.0",
+    "torch>=1.9.0"
+]
+classifiers = [
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+Repository = "https://github.com/yourusername/comfy-compose-enhanced"
+Documentation = "https://github.com/yourusername/comfy-compose-enhanced/wiki"
+"Bug Tracker" = "https://github.com/yourusername/comfy-compose-enhanced/issues"
+
+[tool.comfy]
+PublisherId = "comfy-compose"
+DisplayName = "Image Composite Enhanced"
+requires-comfyui = ">=1.0.0"
