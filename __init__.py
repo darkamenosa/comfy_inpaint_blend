@@ -1,11 +1,11 @@
-from .inpaint_blend import InpaintBlend
+from .inpaint_blend import EnhancedImageCompositeMasked
 
 NODE_CLASS_MAPPINGS = {
-    "InpaintBlend": InpaintBlend,
+    "EnhancedImageCompositeMasked": EnhancedImageCompositeMasked,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "InpaintBlend": "Inpaint Blend",
+    "EnhancedImageCompositeMasked": "Enhanced Image Composite Masked",
 }
 
 __all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]

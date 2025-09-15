@@ -49,7 +49,7 @@ The standard `ImageCompositeMasked` node works well with Google Nano Banana but 
 
 ## Usage
 
-The node appears as **"Inpaint Blend"** in the image/inpainting category.
+The node appears as **"Enhanced Image Composite Masked"** in the image/inpainting category.
 
 ### Typical Image-Space Inpainting Workflow
 

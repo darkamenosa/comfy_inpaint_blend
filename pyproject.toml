@@ -20,5 +20,5 @@ Documentation = "https://github.com/darkamenosa/comfy_inpaint_blend/wiki"
 
 [tool.comfy]
 PublisherId = "darkamenosa"
-DisplayName = "Inpaint Blend"
+DisplayName = "Enhanced Image Composite Masked"
 requires-comfyui = ">=1.0.0"

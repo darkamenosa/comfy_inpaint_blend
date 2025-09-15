@@ -4,7 +4,7 @@ import numpy as np
 
 MAX_RESOLUTION = 16384
 
-class InpaintBlend:
+class EnhancedImageCompositeMasked:
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -14,7 +14,7 @@ class InpaintBlend:
                 "x": ("INT", {"default": 0, "min": 0, "max": MAX_RESOLUTION, "step": 1}),
                 "y": ("INT", {"default": 0, "min": 0, "max": MAX_RESOLUTION, "step": 1}),
                 "resize_source": ("BOOLEAN", {"default": False}),
-                "blend_mode": (["default", "poisson"], {"default": "default"}),
+                "blend_mode": (["default", "poisson"], {"default": "poisson"}),
             },
             "optional": {
                 "mask": ("MASK",),
@@ -25,7 +25,7 @@ class InpaintBlend:
     FUNCTION = "composite"
     CATEGORY = "image/inpainting"
 
-    def composite(self, destination, source, x, y, resize_source, blend_mode="default", mask=None):
+    def composite(self, destination, source, x, y, resize_source, blend_mode="poisson", mask=None):
         if blend_mode == "default":
             return self.default_composite(destination, source, x, y, resize_source, mask)
         elif blend_mode == "poisson":
