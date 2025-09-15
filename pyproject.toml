@@ -1,6 +1,6 @@
 [project]
 name = "comfy-inpaint-blend"
-version = "1.0.0"
+version = "1.1.0"
 description = "Seamless inpainting for image-space models like Google Nano Banana and ByteDance Seedream 4. Fixes color mismatches using Poisson blending."
 license = { text = "MIT" }
 requires-python = ">=3.8"
