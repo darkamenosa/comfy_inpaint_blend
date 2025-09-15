@@ -1,14 +1,23 @@
 # ComfyUI-InpaintBlend
 
-Advanced blending algorithms for seamless inpainting in ComfyUI. This node collection is specifically designed to solve the common problem in image inpainting where the generated content has good texture but mismatched colors compared to the surrounding area.
+Advanced blending algorithms for seamless inpainting in ComfyUI. Specifically designed for image-space inpainting models like **Google Nano Banana** and **ByteDance Seedream 4** that work directly on images rather than latent space.
+
+## The Problem
+
+When using image-space inpainting models (not latent-space KSampler workflows), the typical workflow is:
+1. **Crop** the masked area to a small image
+2. **Generate** new content with models like Nano Banana or Seedream 4
+3. **Merge** the generated image back into the original
+
+The standard `ImageCompositeMasked` node works well with Google Nano Banana but fails with ByteDance Seedream 4, which tends to generate brighter colors that don't blend naturally.
 
 ## Why Poisson Blending?
 
-Traditional alpha blending often creates visible seams when compositing images with different lighting or color conditions. **Poisson blending solves this by**:
-- **Preserving textures and details** from the source image (inpainted region)
-- **Automatically matching colors** to the destination image (original image)
-- **Creating seamless transitions** at boundaries without visible edges
-- **Ideal for inpainting workflows** where AI-generated content has correct structure but wrong colors
+**Poisson blending** solves the color mismatch problem by:
+- **Preserving textures and details** from the generated content
+- **Automatically matching colors** to match the original image
+- **Creating seamless transitions** without visible seams
+- **Especially effective for Seedream 4's** tendency to brighten colors
 
 ## Features
 
@@ -42,12 +51,13 @@ Traditional alpha blending often creates visible seams when compositing images w
 
 The node appears as **"Inpaint Blend"** in the image/inpainting category.
 
-### Typical Inpainting Workflow
+### Typical Image-Space Inpainting Workflow
 
-1. Generate inpainted content with your preferred model
-2. Use this node to composite the inpainted region back to the original image
-3. Set `blend_mode` to `"poisson"` for seamless color matching
-4. The result will preserve the AI-generated textures while matching surrounding colors
+1. **Crop** the masked region from your original image
+2. **Generate** new content using Nano Banana or Seedream 4
+3. **Use this node** to merge the generated content back
+4. **For Nano Banana**: `"default"` mode usually works well
+5. **For Seedream 4**: Use `"poisson"` mode to fix color brightness issues
 
 ### Inputs
 
@@ -108,22 +118,42 @@ The Poisson solver uses:
 - **Replicate padding**: Handles image boundaries naturally
 - **Early stopping**: Exits when convergence tolerance is reached
 
+## Model Characteristics
+
+### Google Nano Banana
+**Strengths:**
+- Accurate color editing
+- Works well with default blending mode
+- Good for targeted inpainting
+
+**Limitations:**
+- Best within 1024x1024 resolution
+- May lose skin texture details
+- Can alter faces, especially with multiple people
+
+**Recommended for:** Precise inpainting tasks
+
+### ByteDance Seedream 4
+**Strengths:**
+- Supports 4K resolution
+- Excellent face preservation
+- Superior skin texture quality
+
+**Limitations:**
+- Requires upscaling input to 1024px minimum
+- Generates brighter colors (requires Poisson blending)
+- Not ideal for direct inpainting without color correction
+
+**Recommended for:** Full image generation, requires Poisson mode for inpainting
+
 ## Use Cases
 
 ### Perfect for:
-- **Inpainting workflows**: When AI generates correct content but wrong colors
-- **Object insertion**: Adding objects that need to match scene lighting
-- **Photo restoration**: Blending restored patches seamlessly
-- **Style transfer**: Combining content with different color schemes
-- **Texture synthesis**: Merging synthesized textures without visible seams
-
-### Example Workflow for Inpainting:
-1. Use any inpainting model (SD, DALL-E, etc.) to generate content
-2. Connect the original image to `destination`
-3. Connect the inpainted result to `source`
-4. Provide the inpainting mask
-5. Set `blend_mode` to `"poisson"`
-6. The output will have the AI's textures with correct colors
+- **Image-space inpainting**: Models that work directly on images (not latent space)
+- **Color mismatch correction**: Especially Seedream 4's brightness issues
+- **Face/skin editing**: Preserving texture while fixing colors
+- **High-resolution workflows**: 4K support with proper blending
+- **Multi-person scenes**: Maintaining consistent lighting across edits
 
 ## Requirements
 
