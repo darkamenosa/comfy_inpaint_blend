@@ -1,6 +1,6 @@
-# ComfyUI Image Composite Enhanced
+# ComfyUI-InpaintBlend
 
-An enhanced version of the ImageCompositeMasked node for ComfyUI with **Poisson blending** support for seamless image compositing. This implementation is specifically designed to solve the common problem in image inpainting where the generated content has good texture but mismatched colors compared to the surrounding area.
+Advanced blending algorithms for seamless inpainting in ComfyUI. This node collection is specifically designed to solve the common problem in image inpainting where the generated content has good texture but mismatched colors compared to the surrounding area.
 
 ## Why Poisson Blending?
 
@@ -26,21 +26,21 @@ Traditional alpha blending often creates visible seams when compositing images w
    cd ComfyUI/custom_nodes
    ```
 
-2. Clone or copy this repository:
+2. Clone this repository:
    ```bash
-   git clone <repository-url> comfy_compose
+   git clone https://github.com/yourusername/ComfyUI-InpaintBlend.git comfy_inpaint_blend
    ```
 
 3. Install dependencies:
    ```bash
-   pip install -r comfy_compose/requirements.txt
+   pip install -r comfy_inpaint_blend/requirements.txt
    ```
 
 4. Restart ComfyUI
 
 ## Usage
 
-The node appears as **"Image Composite Masked (Enhanced)"** in the image category.
+The node appears as **"Inpaint Blend"** in the image/inpainting category.
 
 ### Typical Inpainting Workflow
 
